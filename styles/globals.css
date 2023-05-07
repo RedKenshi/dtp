@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --background-start-rgb: 234, 239, 240;
   --background-end-rgb: 255, 255, 255;
 }
 
@@ -16,12 +16,107 @@
   }
 }
 
+html{
+  /*background-image:  url("../public/waves-blue.svg");*/
+}
+
 body {
+  @apply bg-white bg-opacity-60 backdrop-blur-sm font-sans;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: 'Inter';
+}
+
+.loader {
+  border: 10px solid var(--darker); 
+  border-top: 10px solid var(--info); 
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.navbar {
+  height: 4rem;
+  width: 100%;
+  background-color: #ffffff;
+  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+  color: var(--colors-text);
+  position: fixed;
+  top: 0;
+  padding: 0 10vw;
+  font-weight: bold;
+  border-bottom: 1px solid var(--color-gray);
+  z-index: 99;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.navbar img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.navbar li {
+  border-radius: 50%;
+}
+
+input[type=file]::file-selector-button {
+  @apply bg-indigo-500 text-white border
+}
+input[type=file]::file-selector-button:hover {
+  @apply bg-indigo-400
+}
+
+.flex-col-gap{
+  @apply flex flex-col gap-4;
+}
+.flex-col-gap-center{
+  @apply flex flex-col gap-4 justify-center items-center;
+}
+.flex-row-gap{
+  @apply flex flex-row gap-4;
+}
+.flex-row-gap-center{
+  @apply flex flex-row gap-4 justify-center items-center;
+}
+
+.input{
+  @apply bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+}
+.input-colorless{
+  @apply bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+}
+.input:focus-visible{
+  outline:none
+}
+
+.panel{
+  @apply max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700
+}
+
+main{
+  @apply flex min-h-screen flex-col ml-64;
+  
+}
+
+main.noside{
+  @apply ml-0 pt-16
 }
